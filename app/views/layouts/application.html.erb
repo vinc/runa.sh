@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-100">
+<html lang="en" data-bs-theme="dark" class="h-100">
   <head>
     <title>Runa</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -10,7 +10,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="h-100 bg-dark container d-flex flex-column">
+  <body class="h-100 container d-flex flex-column">
     <% if notice %>
       <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Success!</strong> <%= notice %>
