@@ -1,0 +1,10 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to "Tasks", tasks_path %></li>
+  </ol>
+</nav>
+
+<h1>Create task</h1>
+
+<%= render "form", task: @task %>

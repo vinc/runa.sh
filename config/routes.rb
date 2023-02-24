@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :tasks
   devise_for :users
+
+  resources :tasks do
+    resources :runs
+  end
+  resources :runs
+
   get "pages/home"
 
   root "pages#home"
