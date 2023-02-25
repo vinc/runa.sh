@@ -7,6 +7,7 @@ class Run < ApplicationRecord
     state :waiting, initial: true
     state :running
     state :finished
+    state :canceled
 
     event :start do
       transitions from: :waiting, to: :running
@@ -14,6 +15,10 @@ class Run < ApplicationRecord
 
     event :finish do
       transitions from: :running, to: :finished
+    end
+
+    event :cancel do
+      transitions from: :running, to: :canceled
     end
   end
 end

@@ -1,7 +1,6 @@
 class RunsController < ApplicationController
-  before_action :set_runs, only: [:index, :create]
-
   def index
+    @runs = params["task_id"] ? Task.find(params["task_id"]).runs : Run.all
   end
 
   def show
@@ -9,18 +8,19 @@ class RunsController < ApplicationController
   end
 
   def create
-    @run = @runs.create
+    @task = Task.find(params["task_id"])
+    @run = @task.runs.create
     if @run.save
       RunJob.perform_later(@run)
       redirect_to @run
     else
-      redirect :back
+      redirect_to @task
     end
   end
 
-  private
-
-  def set_runs
-    @runs = params["task_id"] ? Task.find(params["task_id"]).runs : Run.all
+  def cancel
+    @run = Run.find(params["id"])
+    @run.cancel!
+    redirect_to @run
   end
 end

@@ -16,12 +16,12 @@
     <%= f.text_field :name, class: "form-control #{"is-invalid" if task.errors[:name].any?}" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :command %>
-    <%= f.text_area :command, rows: 3, class: "form-control #{"is-invalid" if task.errors[:command].any?}" %>
+  <div class="form-group mt-2">
+    <%= f.label :input %>
+    <%= f.text_area :input, rows: 3, class: "form-control #{"is-invalid" if task.errors[:input].any?}" %>
   </div>
 
-  <div class="d-grid mt-3">
+  <div class="d-grid mt-4">
     <%= f.submit class: "btn btn-outline-primary" %>
   </div>
 <% end %>

@@ -1,25 +1,29 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
-    <li class="breadcrumb-item" aria-current="page"><%= link_to "Tasks", tasks_path %></li>
-  </ol>
-</nav>
+<div class="pb-3">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Runa", root_path %></li>
+      <li class="breadcrumb-item" aria-current="page"><%= link_to "Tasks", tasks_path %></li>
+    </ol>
+  </nav>
 
-<h1><%= @task.name %></h1>
-<p><%= @task.created_at %></p>
+  <h1><%= @task.name %></h1>
+  <p><%= @task.created_at %></p>
 
-<h3>Command</h3>
-<div class="alert alert-light" role="alert">
-  <pre class="mb-0"><code><%= @task.command %></code></pre>
+  <h3>Input</h3>
+  <div class="alert alert-light" role="alert">
+    <pre class="mb-0"><code><%= @task.input %></code></pre>
+  </div>
+
+  <% if @task.runs.any? %>
+    <h3>Previous Runs</h3>
+    <ul>
+      <% @task.runs.order(created_at: :desc).each do |run| %>
+        <li><%= link_to run.created_at, run %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="d-grid">
+    <%= link_to "Run task", task_runs_path(@task.id), class: "btn btn-outline-primary", data: { turbo_method: :post } %>
+  </div>
 </div>
-
-<% if @task.runs.any? %>
-  <h3>Previous Runs</h3>
-  <ul>
-    <% @task.runs.each do |run| %>
-      <li><%= link_to run.created_at, run %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= link_to "Run task", task_runs_path(@task.id), class: "btn btn-outline-primary", data: { turbo_method: :post } %>

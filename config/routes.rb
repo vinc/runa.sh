@@ -2,9 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :tasks do
-    resources :runs
+    resources :runs, only: [:index, :create]
   end
-  resources :runs
+
+  resources :runs do
+    member do
+      put "cancel"
+    end
+  end
 
   get "pages/home"
 

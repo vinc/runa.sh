@@ -1,14 +1,27 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
-    <li class="breadcrumb-item" aria-current="page"><%= link_to "Tasks", tasks_path %></li>
-  </ol>
-</nav>
+<div class="pb-3">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Runa", root_path %></li>
+      <li class="breadcrumb-item" aria-current="page"><%= link_to "Tasks", tasks_path %></li>
+    </ol>
+  </nav>
 
-<h1><%= link_to @run.task.name, @run.task %></h1>
-<p><%= @run.created_at %></p>
+  <h1><%= link_to @run.task.name, @run.task %></h1>
+  <p><%= @run.created_at %></p>
 
-<h3>Output</h3>
-<div class="alert alert-light" role="alert">
-  <pre class="mb-0"><code><%= @run.output %></code></pre>
+  <h3>Input</h3>
+  <div class="alert alert-light" role="alert">
+    <pre class="mb-0"><code><%= @run.task.input %></code></pre>
+  </div>
+
+  <h3>Output</h3>
+  <div class="alert alert-light" role="alert">
+    <pre class="mb-0"><code><%= @run.output %></code></pre>
+  </div>
+
+  <% if @run.waiting? or @run.running? %>
+    <div class="d-grid">
+      <%= link_to "Cancel run", cancel_run_path(@run), class: "btn btn-outline-danger", data: { turbo_method: :put } %>
+    </div>
+  <% end %>
 </div>

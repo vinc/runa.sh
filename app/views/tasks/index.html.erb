@@ -1,23 +1,27 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
-    <li class="breadcrumb-item active" aria-current="page">Tasks</li>
-  </ol>
-</nav>
+<div class="pb-3">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Runa", root_path %></li>
+      <li class="breadcrumb-item active" aria-current="page">Tasks</li>
+    </ol>
+  </nav>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  <% @tasks.each do |task| %>
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-body">
-          <h4 class="card-title"><%= link_to task.name, task %></h4>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted"><%= task.created_at.strftime("%FT%T") %></small>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @tasks.each do |task| %>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h4 class="card-title"><%= link_to task.name, task %></h4>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted"><%= task.created_at.strftime("%FT%T") %></small>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<%= link_to "Create task", new_task_path, class: "btn btn-outline-primary mt-4" %>
+  <div class="d-grid mt-4">
+    <%= link_to "Create task", new_task_path, class: "btn btn-outline-primary" %>
+  </div>
+</div>

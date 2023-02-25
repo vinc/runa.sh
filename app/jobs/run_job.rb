@@ -4,12 +4,13 @@ class RunJob < ApplicationJob
   def perform(run)
     run.start!
 
-    cmd = run.task.command
-    out = ""
+    cmd = run.task.input
+    out = []
     IO.popen(cmd) do |io|
       until io.eof?
-        out += io.gets
-        run.update(output: out)
+        out << io.gets
+        run.update(output: out.join)
+        return if run.reload.canceled?
       end
     end
 
