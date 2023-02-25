@@ -9,6 +9,10 @@
   <h1><%= @task.name %></h1>
   <p><%= @task.created_at %></p>
 
+  <div class="d-grid mb-3">
+    <%= link_to "Run", task_runs_path(@task.id), class: "btn btn-primary", data: { turbo_method: :post } %>
+  </div>
+
   <h3>Input</h3>
   <div class="alert alert-light" role="alert">
     <pre class="mb-0"><code><%= @task.input %></code></pre>
@@ -22,8 +26,4 @@
       <% end %>
     </ul>
   <% end %>
-
-  <div class="d-grid">
-    <%= link_to "Run task", task_runs_path(@task.id), class: "btn btn-outline-primary", data: { turbo_method: :post } %>
-  </div>
 </div>

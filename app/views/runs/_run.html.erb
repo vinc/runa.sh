@@ -1,0 +1,21 @@
+<div id="<%= dom_id run %>">
+  <%= turbo_frame_tag dom_id(run) do %>
+    <div class="d-grid mb-3">
+      <% if run.waiting? or run.running? %>
+        <%= link_to "Cancel", cancel_run_path(run), class: "btn btn-danger", data: { turbo_method: :put } %>
+      <% else %>
+        <%= link_to run.state.capitalize, "#", class: "btn btn-outline-secondary disabled" %>
+      <% end %>
+    </div>
+
+    <h3>Input</h3>
+    <div class="alert alert-light" role="alert">
+      <pre class="mb-0"><code><%= run.task.input %></code></pre>
+    </div>
+
+    <h3>Output</h3>
+    <div class="alert alert-light" role="alert">
+      <pre class="mb-0"><code><%= run.output %></code></pre>
+    </div>
+  <% end %>
+</div>

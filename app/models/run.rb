@@ -18,7 +18,9 @@ class Run < ApplicationRecord
     end
 
     event :cancel do
-      transitions from: :running, to: :canceled
+      transitions from: [:waiting, :running], to: :canceled
     end
   end
+
+  after_update_commit -> { broadcast_replace_to "run" }
 end
