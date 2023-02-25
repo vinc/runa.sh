@@ -20,11 +20,26 @@
 
   <% if @task.runs.any? %>
     <h3>Previous Runs</h3>
-    <ul>
-      <% @task.runs.order(created_at: :desc).each do |run| %>
-        <li><%= link_to run.created_at, run %></li>
-      <% end %>
-    </ul>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @task.runs.order(created_at: :desc).each do |run| %>
+          <tr>
+            <th scope="row">
+              <%= link_to run.created_at, run %>
+            </th>
+            <td class="text-muted">
+              <%= run.state.capitalize %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   <% end %>
 
   <div class="d-grid mt-4">
