@@ -1,3 +1,4 @@
-web: unset PORT && bin/rails server
+web: unset PORT && bin/rails server -b 0.0.0.0
+job: bin/delayed_job run
 js: yarn build --watch
 css: yarn build:css --watch

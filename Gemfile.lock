@@ -77,10 +77,16 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
+    daemons (1.4.1)
     date (3.3.3)
     debug (1.7.1)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    delayed_job (4.1.11)
+      activesupport (>= 3.0, < 8.0)
+    delayed_job_active_record (4.1.7)
+      activerecord (>= 3.0, < 8.0)
+      delayed_job (>= 3.0, < 5)
     devise (4.9.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -225,7 +231,9 @@ DEPENDENCIES
   aasm
   bootsnap
   cssbundling-rails
+  daemons
   debug
+  delayed_job_active_record
   devise
   devise-bootstrap5
   devise-i18n
