@@ -1,6 +1,6 @@
 class RunsController < ApplicationController
   def index
-    @runs = params["task_id"] ? Task.find(params["task_id"]).runs : Run.all
+    @runs = (params["task_id"] ? Task.find(params["task_id"]).runs : Run.all).order(created_at: :desc)
   end
 
   def show
