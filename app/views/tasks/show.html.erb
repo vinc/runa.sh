@@ -24,6 +24,7 @@
       <thead>
         <tr>
           <th scope="col">Date</th>
+          <th scope="col">Duration</th>
           <th scope="col">State</th>
         </tr>
       </thead>
@@ -33,7 +34,10 @@
             <th scope="row">
               <%= link_to run.created_at, run %>
             </th>
-            <td class="text-muted">
+            <td>
+              <%= number_to_human(run.duration, precision: 2) %>s
+            </td>
+            <td>
               <%= run.state.capitalize %>
             </td>
           </tr>

@@ -23,4 +23,12 @@ class Run < ApplicationRecord
   end
 
   after_update_commit -> { broadcast_replace_to "run" }
+
+  def duration
+    if started_at
+      (finished_at || canceled_at || Time.now) - started_at
+    else
+      0
+    end
+  end
 end
