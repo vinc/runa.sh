@@ -1,7 +1,7 @@
 class Run < ApplicationRecord
   include AASM
 
-  belongs_to :task
+  belongs_to :task, touch: true
 
   aasm timestamps: true, column: "state" do
     state :created, initial: true

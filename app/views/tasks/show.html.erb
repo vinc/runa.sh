@@ -7,7 +7,7 @@
   </nav>
 
   <h1><%= @task.name %></h1>
-  <p><%= @task.created_at %></p>
+  <p>Last updated at <%= @task.updated_at %></p>
 
   <div class="d-grid mb-3">
     <%= link_to "Run", task_runs_path(@task.id), class: "btn btn-primary", data: { turbo_method: :post } %>
@@ -29,10 +29,10 @@
         </tr>
       </thead>
       <tbody>
-        <% @task.runs.order(created_at: :desc).each do |run| %>
+        <% @task.runs.order(updated_at: :desc).each do |run| %>
           <tr>
             <th scope="row">
-              <%= link_to run.created_at, run %>
+              <%= link_to run.updated_at, run %>
             </th>
             <td>
               <%= run.duration.to_i %>s

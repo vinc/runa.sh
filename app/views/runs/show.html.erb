@@ -7,7 +7,7 @@
   </nav>
 
   <h1><%= link_to @run.task.name, @run.task %></h1>
-  <p><%= @run.created_at %></p>
+  <p>Last updated at <%= @run.updated_at %></p>
 
   <%= turbo_stream_from "run" %>
   <%= render "run", run: @run %>
