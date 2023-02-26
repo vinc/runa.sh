@@ -3,7 +3,7 @@ class Run < ApplicationRecord
 
   belongs_to :task
 
-  aasm timestamp: true, column: "state" do
+  aasm timestamps: true, column: "state" do
     state :created, initial: true
     state :started
     state :finished
