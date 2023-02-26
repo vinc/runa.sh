@@ -18,7 +18,7 @@
 
   <div class="form-group mt-2">
     <%= f.label :input %>
-    <%= f.text_area :input, rows: 3, class: "form-control #{"is-invalid" if task.errors[:input].any?}" %>
+    <%= f.text_area :input, rows: 10, class: "form-control #{"is-invalid" if task.errors[:input].any?}" %>
   </div>
 
   <div class="d-grid mt-4">

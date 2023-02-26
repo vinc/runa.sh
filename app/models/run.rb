@@ -3,22 +3,22 @@ class Run < ApplicationRecord
 
   belongs_to :task
 
-  aasm column: "state" do
-    state :waiting, initial: true
-    state :running
+  aasm timestamp: true, column: "state" do
+    state :created, initial: true
+    state :started
     state :finished
     state :canceled
 
     event :start do
-      transitions from: :waiting, to: :running
+      transitions from: :created, to: :started
     end
 
     event :finish do
-      transitions from: :running, to: :finished
+      transitions from: :started, to: :finished
     end
 
     event :cancel do
-      transitions from: [:waiting, :running], to: :canceled
+      transitions from: [:created, :started], to: :canceled
     end
   end
 
