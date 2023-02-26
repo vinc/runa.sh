@@ -4,11 +4,11 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params["id"])
+    @task = Task.find_by(token: params["token"])
   end
 
   def edit
-    @task = Task.find(params["id"])
+    @task = Task.find_by(token: params["token"])
   end
 
   def new
@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find(params["id"])
+    @task = Task.find_by(token: params["token"])
     if @task.update(task_params)
       redirect_to @task
     else

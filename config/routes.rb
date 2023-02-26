@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :tasks do
+  resources :tasks, param: :token do
     resources :runs, only: [:index, :create]
   end
 
-  resources :runs do
+  resources :runs, param: :token do
     member do
       put "cancel"
     end

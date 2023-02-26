@@ -1,14 +1,14 @@
 class RunsController < ApplicationController
   def index
-    @runs = (params["task_id"] ? Task.find(params["task_id"]).runs : Run.all).order(updated_at: :desc)
+    @runs = (params["task_token"] ? Task.find_by(token: params["task_token"]).runs : Run.all).order(updated_at: :desc)
   end
 
   def show
-    @run = Run.find(params["id"])
+    @run = Run.find_by(token: params["token"])
   end
 
   def create
-    @task = Task.find(params["task_id"])
+    @task = Task.find_by(token: params["task_token"])
     @run = @task.runs.create
     if @run.save
       RunJob.perform_later(@run)
@@ -19,7 +19,7 @@ class RunsController < ApplicationController
   end
 
   def cancel
-    @run = Run.find(params["id"])
+    @run = Run.find_by(token: params["token"])
     @run.cancel!
     redirect_to @run
   end

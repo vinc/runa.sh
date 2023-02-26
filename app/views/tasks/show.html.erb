@@ -10,7 +10,7 @@
   <p>Last updated at <%= @task.updated_at %></p>
 
   <div class="d-grid mb-3">
-    <%= link_to "Run", task_runs_path(@task.id), class: "btn btn-primary", data: { turbo_method: :post } %>
+    <%= link_to "Run", task_runs_path(@task), class: "btn btn-primary", data: { turbo_method: :post } %>
   </div>
 
   <h3>Input</h3>

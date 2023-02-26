@@ -1,5 +1,6 @@
 class Run < ApplicationRecord
   include AASM
+  include Tokenizable
 
   belongs_to :task, touch: true
 

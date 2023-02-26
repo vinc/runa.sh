@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_26_110247) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_26_225444) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,7 +38,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_110247) do
     t.datetime "started_at", precision: nil
     t.datetime "finished_at", precision: nil
     t.datetime "canceled_at", precision: nil
+    t.string "token"
     t.index ["task_id"], name: "index_runs_on_task_id"
+    t.index ["token"], name: "index_runs_on_token", unique: true
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -46,6 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_110247) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "input"
+    t.string "token"
+    t.index ["token"], name: "index_tasks_on_token", unique: true
   end
 
   create_table "users", force: :cascade do |t|
