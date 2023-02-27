@@ -52,6 +52,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "aasm"
+gem "aws-sdk-s3"
 gem "daemons"
 gem "delayed_job_active_record"
 gem "devise"
