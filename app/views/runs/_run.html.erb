@@ -2,7 +2,7 @@
   <%= turbo_frame_tag dom_id(run) do %>
     <div class="d-grid mb-3">
       <% if run.created? or run.started? %>
-        <%= link_to "Cancel", cancel_run_path(run), class: "btn btn-danger", data: { turbo_method: :put } %>
+        <%= link_to "Cancel", cancel_task_run_path(run.task, run.sequential_id), class: "btn btn-danger", data: { turbo_method: :put } %>
       <% else %>
         <%= link_to run.state.capitalize, "#", class: "btn btn-outline-secondary disabled" %>
       <% end %>
@@ -17,5 +17,14 @@
     <div class="alert alert-light" role="alert">
       <pre class="mb-0"><code><%= run.output %></code></pre>
     </div>
+
+    <% if run.assets.present? %>
+      <h3>Assets</h3>
+      <ul>
+        <% run.assets.sort_by(&:filename).each do |asset| %>
+          <li><%= link_to asset.filename, asset %></li>
+        <% end %>
+      </ul>
+    <% end %>
   <% end %>
 </div>

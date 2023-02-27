@@ -2,12 +2,17 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><%= link_to "Runa", root_path %></li>
-      <li class="breadcrumb-item" aria-current="page"><%= link_to "Tasks", tasks_path %></li>
+      <li class="breadcrumb-item"><%= link_to "Tasks", tasks_path %></li>
+      <li class="breadcrumb-item"><%= link_to @task.name, @task %></li>
+      <li class="breadcrumb-item"><%= link_to "Runs", task_runs_path(@task) %></li>
     </ol>
   </nav>
 
-  <h1><%= link_to @run.task.name, @run.task %></h1>
-  <p>Last updated at <%= @run.updated_at %></p>
+  <h1>
+    <span class="text-muted float-end">#<%= @run.sequential_id %></span>
+    <%= link_to @task.name, @task %>
+  </h1>
+  <p>Last updated <%= time_tag(@task.updated_at, time_ago_in_words(@task.updated_at)) %> ago</p>
 
   <%= turbo_stream_from "run" %>
   <%= render "run", run: @run %>

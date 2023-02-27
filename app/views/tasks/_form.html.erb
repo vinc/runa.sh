@@ -1,4 +1,4 @@
-<%= form_for(task) do |f| %>
+<%= form_with(model: task) do |f| %>
   <% if task.errors.any? %>
     <div class="alert alert-danger" role="alert">
       <h4 class="alert-heading"><%= form_errors_heading(task) %></h4>
@@ -19,6 +19,11 @@
   <div class="form-group mt-2">
     <%= f.label :input %>
     <%= f.text_area :input, rows: 10, class: "form-control #{"is-invalid" if task.errors[:input].any?}" %>
+  </div>
+
+  <div class="form-group mt-2">
+    <%= f.label :assets %>
+    <%= f.text_field :assets, class: "form-control #{"is-invalid" if task.errors[:assets].any?}" %>
   </div>
 
   <div class="d-grid mt-4">

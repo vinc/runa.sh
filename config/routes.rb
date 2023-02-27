@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :tasks, param: :token do
-    resources :runs, only: [:index, :create]
-  end
-
-  resources :runs, param: :token do
-    member do
-      put "cancel"
+  resources :tasks, param: :uuid do
+    resources :runs, param: :sequential_id do
+      member do
+        put "cancel"
+      end
     end
   end
 

@@ -195,6 +195,9 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.12.0)
+    sequenced (4.0.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -245,6 +248,7 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.2)
   redis (~> 4.0)
   rspec-rails (~> 6.0.0)
+  sequenced
   sprockets-rails
   stimulus-rails
   turbo-rails

@@ -1,8 +1,11 @@
 class Run < ApplicationRecord
   include AASM
-  include Tokenizable
 
   belongs_to :task, touch: true
+
+  acts_as_sequenced scope: :task_id
+
+  has_many_attached :assets
 
   aasm timestamps: true, column: "state" do
     state :created, initial: true
@@ -24,6 +27,10 @@ class Run < ApplicationRecord
   end
 
   after_update_commit -> { broadcast_replace_to "run" }
+
+  def to_param
+    sequential_id
+  end
 
   def duration
     if started_at

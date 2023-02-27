@@ -2,6 +2,8 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><%= link_to "Runa", root_path %></li>
+      <li class="breadcrumb-item"><%= link_to "Tasks", tasks_path %></li>
+      <li class="breadcrumb-item"><%= link_to @task.name, @task %></li>
       <li class="breadcrumb-item active" aria-current="page">Runs</li>
     </ol>
   </nav>
@@ -11,14 +13,22 @@
       <div class="col">
         <div class="card h-100">
           <div class="card-body">
-            <h4 class="card-title"><%= link_to run.task.name, run %></h4>
+            <h4 class="card-title">
+              <span class="text-muted float-end">#<%= run.sequential_id %></span>
+              <%= link_to run.task.name, [run.task, run] %>
+            </h4>
+            <p class="card-text">Last updated <%= time_tag(run.updated_at, time_ago_in_words(run.updated_at)) %> ago</p>
           </div>
           <div class="card-footer">
-            <div class="float-end"><%= run.state %></div>
-            <small class="text-muted"><%= run.created_at %></small>
+            <div class="text-muted float-end"><%= duration_to_human(run.duration) %></div>
+            <div class="text-muted"><%= run.state.capitalize %></div>
           </div>
         </div>
       </div>
     <% end %>
+  </div>
+
+  <div class="d-grid mt-4">
+    <%= link_to "New Run", task_runs_path(@task), class: "btn btn-outline-primary", data: { turbo_method: :post } %>
   </div>
 </div>
