@@ -1,6 +1,8 @@
 class Task < ApplicationRecord
   has_many :runs, dependent: :destroy
 
+  belongs_to :user
+
   enum :runner, [:run_xs, :run_sm, :run_md, :run_lg]
 
   validates :name, presence: true

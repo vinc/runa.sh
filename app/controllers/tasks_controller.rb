@@ -2,23 +2,23 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = Task.order(updated_at: :desc)
+    @tasks = authorize current_user.tasks.order(updated_at: :desc)
   end
 
   def show
-    @task = Task.find_by(uuid: params["uuid"])
+    @task = authorize current_user.tasks.find_by(uuid: params["uuid"])
   end
 
   def edit
-    @task = Task.find_by(uuid: params["uuid"])
+    @task = authorize current_user.tasks.find_by(uuid: params["uuid"])
   end
 
   def new
-    @task = Task.new
+    @task = authorize current_user.tasks.new
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = authorize current_user.tasks.new(task_params)
     if @task.save
       redirect_to @task
     else
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find_by(uuid: params["uuid"])
+    @task = authorize current_user.tasks.find_by(uuid: params["uuid"])
     if @task.update(task_params)
       redirect_to @task
     else

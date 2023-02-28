@@ -57,6 +57,7 @@ gem "devise"
 gem "devise-bootstrap5"
 gem "devise-i18n"
 gem "good_job"
+gem "pundit"
 gem "sequenced"
 
 group :development, :test do

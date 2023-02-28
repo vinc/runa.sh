@@ -1,0 +1,2 @@
+class TaskPolicy < ApplicationPolicy
+end
