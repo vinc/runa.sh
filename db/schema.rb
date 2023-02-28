@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_28_072349) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_28_081617) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -123,6 +123,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_072349) do
     t.string "input"
     t.string "assets"
     t.uuid "uuid"
+    t.integer "runner", default: 0, null: false
     t.index ["uuid"], name: "index_tasks_on_uuid", unique: true
   end
 

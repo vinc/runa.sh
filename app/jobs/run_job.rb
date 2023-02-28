@@ -1,5 +1,5 @@
 class RunJob < ApplicationJob
-  queue_as :run_lg
+  queue_as { self.arguments.first.task.runner }
 
   def perform(run)
     run.start!
