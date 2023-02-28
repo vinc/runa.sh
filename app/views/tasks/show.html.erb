@@ -7,7 +7,7 @@
   </nav>
 
   <h1><%= @task.name %></h1>
-  <p>Last updated <%= time_tag(@task.updated_at, time_ago_in_words(@task.updated_at)) %> ago</p>
+  <p>Created <%= time_tag(@task.created_at, time_ago_in_words(@task.created_at)) %> ago</p>
 
   <div class="d-grid mb-3">
     <%= link_to "Run", task_runs_path(@task), class: "btn btn-primary", data: { turbo_method: :post } %>
@@ -24,13 +24,13 @@
       <thead>
         <tr>
           <th scope="col">Id</th>
-          <th scope="col">Updated</th>
+          <th scope="col">Created</th>
           <th scope="col">Duration</th>
           <th scope="col">State</th>
         </tr>
       </thead>
       <tbody>
-        <% @task.runs.order(updated_at: :desc).each do |run| %>
+        <% @task.runs.order(created_at: :desc).each do |run| %>
           <tr>
             <th scope="row">
               <%= link_to(run.sequential_id, [@task, run]) %>

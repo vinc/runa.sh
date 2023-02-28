@@ -17,7 +17,7 @@
               <span class="text-muted float-end">#<%= run.sequential_id %></span>
               <%= link_to run.task.name, [run.task, run] %>
             </h4>
-            <p class="card-text">Last updated <%= time_tag(run.updated_at, time_ago_in_words(run.updated_at)) %> ago</p>
+            <p class="card-text">Created <%= time_tag(run.created_at, time_ago_in_words(run.created_at)) %> ago</p>
           </div>
           <div class="card-footer">
             <div class="text-muted float-end"><%= duration_to_human(run.duration) %></div>

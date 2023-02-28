@@ -3,7 +3,7 @@ class RunsController < ApplicationController
   before_action :set_task
 
   def index
-    @runs = authorize @task.runs.order(updated_at: :desc)
+    @runs = authorize @task.runs.order(created_at: :desc)
   end
 
   def show

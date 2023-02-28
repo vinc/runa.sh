@@ -12,7 +12,7 @@
         <div class="card h-100">
           <div class="card-body">
             <h4 class="card-title"><%= link_to task.name, task %></h4>
-            <p class="card-text">Last updated <%= time_tag(task.updated_at, time_ago_in_words(task.updated_at)) %> ago</p>
+            <p class="card-text">Created <%= time_tag(task.created_at, time_ago_in_words(task.created_at)) %> ago</p>
           </div>
           <div class="card-footer">
             <div class="text-muted"><%= pluralize(task.runs.count, "run") %></div>

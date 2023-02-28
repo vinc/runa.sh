@@ -12,7 +12,7 @@
     <span class="text-muted float-end">#<%= @run.sequential_id %></span>
     <%= link_to @task.name, @task %>
   </h1>
-  <p>Last updated <%= time_tag(@task.updated_at, time_ago_in_words(@task.updated_at)) %> ago</p>
+  <p>Created <%= time_tag(@run.created_at, time_ago_in_words(@run.created_at)) %> ago</p>
 
   <%= turbo_stream_from "run" %>
   <%= render "run", run: @run %>
