@@ -41,8 +41,8 @@
             <td>
               <%= duration_to_human(run.duration) %>
             </td>
-            <td>
-              <%= run.state.capitalize %>
+            <td class="text-<%= run_color(run) %>">
+              <%= run_state(run) %>
             </td>
           </tr>
         <% end %>

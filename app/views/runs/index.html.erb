@@ -11,7 +11,7 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <% @runs.each do |run| %>
       <div class="col">
-        <div class="card h-100">
+        <div class="card h-100 border-<%= run_color(run) %>">
           <div class="card-body">
             <h4 class="card-title">
               <span class="text-muted float-end">#<%= run.sequential_id %></span>
@@ -21,7 +21,7 @@
           </div>
           <div class="card-footer">
             <div class="text-muted float-end"><%= duration_to_human(run.duration) %></div>
-            <div class="text-muted"><%= run.state.capitalize %></div>
+            <div class="text-muted"><span class="text-<%= run_color(run) %>"><%= run_state(run) %></span></div>
           </div>
         </div>
       </div>
