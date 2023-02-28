@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount GoodJob::Engine => "jobs"
+
   devise_for :users
 
   resources :tasks, param: :uuid do
