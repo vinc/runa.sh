@@ -36,7 +36,7 @@
               <%= link_to(run.sequential_id, [@task, run]) %>
             </th>
             <td>
-              <%= time_tag(run.updated_at, time_ago_in_words(run.updated_at)) %> ago
+              <%= time_tag(run.created_at, time_ago_in_words(run.created_at)) %> ago
             </td>
             <td>
               <%= duration_to_human(run.duration) %>
