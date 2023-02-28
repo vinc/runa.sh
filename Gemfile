@@ -53,11 +53,10 @@ gem "bootsnap", require: false
 
 gem "aasm"
 gem "aws-sdk-s3"
-gem "daemons"
-gem "delayed_job_active_record"
 gem "devise"
 gem "devise-bootstrap5"
 gem "devise-i18n"
+gem "good_job"
 gem "sequenced"
 
 group :development, :test do
