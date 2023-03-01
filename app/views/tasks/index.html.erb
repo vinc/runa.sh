@@ -6,6 +6,10 @@
     </ol>
   </nav>
 
+  <div class="d-grid mb-4">
+    <%= link_to "New Task", new_task_path, class: "btn btn-outline-primary" %>
+  </div>
+
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <% @tasks.each do |task| %>
       <div class="col">
@@ -22,7 +26,7 @@
     <% end %>
   </div>
 
-  <div class="d-grid mt-4">
-    <%= link_to "New Task", new_task_path, class: "btn btn-outline-primary" %>
+  <div class="d-flex justify-content-center mt-3">
+    <%= paginate @tasks %>
   </div>
 </div>

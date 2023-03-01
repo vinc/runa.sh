@@ -19,7 +19,7 @@
   </div>
 
   <% if @task.runs.any? %>
-    <h3>Previous Runs</h3>
+    <h3>Latest Runs</h3>
     <table class="table">
       <thead>
         <tr>
@@ -30,7 +30,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @task.runs.order(created_at: :desc).each do |run| %>
+        <% @task.runs.order(created_at: :desc).limit(10).each do |run| %>
           <tr>
             <th scope="row">
               <%= link_to(run.sequential_id, [@task, run]) %>
