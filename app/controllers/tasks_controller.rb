@@ -2,7 +2,10 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = authorize current_user.tasks.order(created_at: :desc).page(params["page"]).per(params["limit"] || 24)
+    scope = current_user.tasks
+    scope = scope.where("name ILIKE ?", params["query"]) if params["query"].present?
+    scope = scope.order(created_at: :desc).page(params["page"]).per(params["limit"] || 24)
+    @tasks = authorize scope
   end
 
   def show

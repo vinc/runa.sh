@@ -3,7 +3,10 @@ class RunsController < ApplicationController
   before_action :set_task
 
   def index
-    @runs = authorize @task.runs.order(created_at: :desc).page(params["page"]).per(params["limit"] || 24)
+    scope = @task.runs
+    scope = scope.where("output ~* ?", params["query"]) if params["query"].present?
+    scope = scope.order(created_at: :desc).page(params["page"]).per(params["limit"] || 24)
+    @runs = authorize scope
   end
 
   def show
