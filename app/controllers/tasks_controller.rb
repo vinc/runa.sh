@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index
     scope = current_user.tasks
-    scope = scope.where("name ILIKE ?", params["query"]) if params["query"].present?
+    scope = scope.where("name ~* ?", params["query"]) if params["query"].present?
     scope = scope.order(created_at: :desc).page(params["page"]).per(params["limit"] || 24)
     @tasks = authorize scope
   end
