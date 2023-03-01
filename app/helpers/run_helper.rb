@@ -9,7 +9,7 @@ module RunHelper
 
   def run_color(run)
     case run.state
-    when "started" then "success"
+    when "started" then "warning"
     end
   end
 end
