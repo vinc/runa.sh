@@ -3,7 +3,7 @@ class RunsController < ApplicationController
   before_action :set_task
 
   def index
-    @runs = authorize @task.runs.order(created_at: :desc).page(params["page"]).per(24)
+    @runs = authorize @task.runs.order(created_at: :desc).page(params["page"]).per(params["limit"] || 24)
   end
 
   def show

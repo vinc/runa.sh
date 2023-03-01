@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = authorize current_user.tasks.order(created_at: :desc).page(params["page"]).per(24)
+    @tasks = authorize current_user.tasks.order(created_at: :desc).page(params["page"]).per(params["limit"] || 24)
   end
 
   def show
