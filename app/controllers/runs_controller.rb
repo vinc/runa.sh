@@ -29,7 +29,7 @@ class RunsController < ApplicationController
     redirect_to task_run_path(@task, @run.sequential_id)
   end
 
-  private
+  protected
 
   def set_task
     @task = current_user.tasks.find_by(uuid: params["task_uuid"])

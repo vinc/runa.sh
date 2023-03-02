@@ -1,0 +1,39 @@
+<div class="pb-3">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Runa", root_path %></li>
+      <li class="breadcrumb-item"><%= link_to "Tasks", tasks_path %></li>
+      <li class="breadcrumb-item"><%= link_to @task.name, @task %></li>
+      <li class="breadcrumb-item"><%= link_to "##{@run.sequential_id}", [@task, @run] %></li>
+      <li class="breadcrumb-item active" aria-current="page">Assets</li>
+    </ol>
+  </nav>
+
+  <% if @task.runs.any? %>
+    <h3>Assets</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Type</th>
+          <th scope="col">Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @assets.each do |asset| %>
+          <tr>
+            <th scope="row">
+              <%= link_to(asset.filename, asset) %>
+            </th>
+            <td>
+              <%= asset.content_type %>
+            </td>
+            <td>
+              <%= number_to_human_size(asset.blob.byte_size) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

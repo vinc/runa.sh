@@ -38,7 +38,7 @@ class TasksController < ApplicationController
     end
   end
 
-  private
+  protected
 
   def task_params
     params.require(:task).permit(:name, :input, :assets, :runner)
