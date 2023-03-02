@@ -2,6 +2,7 @@ class RunJob < ApplicationJob
   queue_as { self.arguments.first.task.runner }
 
   def perform(run)
+    run.host = Socket.gethostname
     run.start!
     Dir.mktmpdir do |dir|
       out = []

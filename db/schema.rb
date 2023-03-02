@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_28_133555) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_02_124914) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -112,6 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_133555) do
     t.datetime "finished_at", precision: nil
     t.datetime "canceled_at", precision: nil
     t.integer "sequential_id"
+    t.string "host"
     t.index ["sequential_id"], name: "index_runs_on_sequential_id"
     t.index ["task_id"], name: "index_runs_on_task_id"
   end
