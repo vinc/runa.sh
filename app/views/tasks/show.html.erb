@@ -6,9 +6,7 @@
     </ol>
   </nav>
 
-  <h1>
-    <%= @task.name %>
-  </h1>
+  <h1><%= title @task.name %></h1>
   <p>Created <%= time_tag(@task.created_at, time_ago_in_words(@task.created_at)) %> ago</p>
 
   <div class="d-grid mb-3">

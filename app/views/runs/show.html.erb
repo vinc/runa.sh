@@ -8,6 +8,7 @@
     </ol>
   </nav>
 
+  <% title "#{@task.name} ##{@run.sequential_id}" %>
   <h1>
     <span class="text-muted float-end">#<%= @run.sequential_id %></span>
     <%= link_to @task.name, @task %>
