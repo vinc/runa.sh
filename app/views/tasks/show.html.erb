@@ -1,4 +1,4 @@
-<div class="pb-3">
+<div class="pt-2 pb-4">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><%= link_to "Runa", root_path %></li>
@@ -6,7 +6,9 @@
     </ol>
   </nav>
 
-  <h1><%= @task.name %></h1>
+  <h1>
+    <%= @task.name %>
+  </h1>
   <p>Created <%= time_tag(@task.created_at, time_ago_in_words(@task.created_at)) %> ago</p>
 
   <div class="d-grid mb-3">
