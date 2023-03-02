@@ -19,7 +19,14 @@
   </div>
 
   <% if @task.runs.any? %>
-    <h3>Latest Runs</h3>
+    <h3>
+      <span class="float-end">
+        <%= link_to task_runs_path(@task) do %>
+          All Runs
+        <% end %>
+      </span>
+      Latest Runs
+    </h3>
     <table class="table">
       <thead>
         <tr>
