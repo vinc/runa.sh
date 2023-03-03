@@ -39,6 +39,6 @@ class RunsController < ApplicationController
   end
 
   def set_breadcrumb
-    @breadcrumb = [["Tasks", tasks_path], [@task.uuid, @task]]
+    @breadcrumb = [["Runa", root_path], ["Tasks", tasks_path], [@task.uuid, @task]]
   end
 end
