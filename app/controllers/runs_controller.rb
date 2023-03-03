@@ -1,16 +1,19 @@
 class RunsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_task
+  before_action :set_breadcrumb
 
   def index
     scope = @task.runs
     scope = scope.where("output ~* ?", params["query"]) if params["query"].present?
     scope = scope.order(created_at: :desc).page(params["page"]).per(params["limit"] || 24)
     @runs = authorize scope
+    @breadcrumb += [["Runs"]]
   end
 
   def show
     @run = authorize @task.runs.find_by(sequential_id: params["sequential_id"])
+    @breadcrumb += [["Runs", task_runs_path(@task)], [@run.sequential_id]]
   end
 
   def create
@@ -33,5 +36,9 @@ class RunsController < ApplicationController
 
   def set_task
     @task = current_user.tasks.find_by(uuid: params["task_uuid"])
+  end
+
+  def set_breadcrumb
+    @breadcrumb = [["Tasks", tasks_path], [@task.uuid, @task]]
   end
 end

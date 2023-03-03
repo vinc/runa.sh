@@ -25,6 +25,30 @@
       </div>
     <% end %>
 
-    <%= yield %>
+    <% if content_for? :fullscreen %>
+      <%= yield :fullscreen %>
+    <% else %>
+      <div class="pt-2 pb-4">
+        <% if current_user.present? %>
+          <p class="float-end"><%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %></p>
+        <% end %>
+        <% if @breadcrumb.present? %>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb flex-nowrap pe-2">
+              <% @breadcrumb.each do |name, link| %>
+                <li class="breadcrumb-item text-truncate <%= name == @breadcrumb.last.first ? "active" : "" %>">
+                  <% if link.present? %>
+                    <%= link_to name, link %>
+                  <% else %>
+                    <%= name %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ol>
+          </nav>
+        <% end %>
+        <%= yield %>
+      </div>
+    <% end %>
   </body>
 </html>

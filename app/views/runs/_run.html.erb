@@ -20,7 +20,7 @@
 
     <% if run.assets.present? %>
       <h3>Assets</h3>
-      <ul>
+      <ul class="mb-0">
         <% run.assets.sort_by(&:filename).each do |asset| %>
           <li><%= link_to asset.filename, asset %></li>
         <% end %>

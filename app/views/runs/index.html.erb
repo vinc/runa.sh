@@ -1,36 +1,25 @@
-<div class="pt-2 pb-4">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to "Runa", root_path %></li>
-      <li class="breadcrumb-item"><%= link_to "Tasks", tasks_path %></li>
-      <li class="breadcrumb-item"><%= link_to @task.name, @task %></li>
-      <li class="breadcrumb-item active" aria-current="page"><%= title "Runs" %></li>
-    </ol>
-  </nav>
+<div class="d-grid mb-4">
+  <%= link_to "New Run", task_runs_path(@task), class: "btn btn-outline-primary", data: { turbo_method: :post } %>
+</div>
 
-  <div class="d-grid mb-4">
-    <%= link_to "New Run", task_runs_path(@task), class: "btn btn-outline-primary", data: { turbo_method: :post } %>
-  </div>
-
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <% @runs.each do |run| %>
-      <div class="col">
-        <div class="card h-100 border-<%= run_color(run) %>">
-          <div class="card-body">
-            <h4 class="card-title">
-              <span class="text-muted float-end">#<%= run.sequential_id %></span>
-              <%= link_to run.task.name, [run.task, run] %>
-            </h4>
-            <p class="card-text">Created <%= time_tag(run.created_at, time_ago_in_words(run.created_at)) %> ago</p>
-          </div>
-          <div class="card-footer">
-            <div class="text-muted float-end"><%= duration_to_human(run.duration) %></div>
-            <div class="text-muted"><span class="text-<%= run_color(run) %>"><%= run_state(run) %></span></div>
-          </div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <% @runs.each do |run| %>
+    <div class="col">
+      <div class="card h-100 border-<%= run_color(run) %>">
+        <div class="card-body">
+          <h4 class="card-title">
+            <span class="text-muted float-end">#<%= run.sequential_id %></span>
+            <%= link_to run.task.name, [run.task, run] %>
+          </h4>
+          <p class="card-text">Created <%= time_tag(run.created_at, time_ago_in_words(run.created_at)) %> ago</p>
+        </div>
+        <div class="card-footer">
+          <div class="text-muted float-end"><%= duration_to_human(run.duration) %></div>
+          <div class="text-muted"><span class="text-<%= run_color(run) %>"><%= run_state(run) %></span></div>
         </div>
       </div>
-    <% end %>
-  </div>
-
-  <%= paginate @runs %>
+    </div>
+  <% end %>
 </div>
+
+<%= paginate @runs %>

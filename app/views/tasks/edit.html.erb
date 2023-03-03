@@ -1,12 +1,3 @@
-<div class="py-2">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to "Runa", root_path %></li>
-      <li class="breadcrumb-item" aria-current="page"><%= link_to "Tasks", tasks_path %></li>
-    </ol>
-  </nav>
+<h1><%= title "Edit Task" %></h1>
 
-  <h1><%= title "Edit Task" %></h1>
-
-  <%= render "form", task: @task %>
-</div>
+<%= render "form", task: @task %>

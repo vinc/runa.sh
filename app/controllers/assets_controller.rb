@@ -3,6 +3,7 @@ class AssetsController < RunsController
   before_action :set_assets
 
   def index
+    @breadcrumb += [["Runs", task_runs_path(@task)], [@run.sequential_id, task_run_path(@task.uuid, @run.sequential_id)], ["Assets"]]
   end
 
   def show

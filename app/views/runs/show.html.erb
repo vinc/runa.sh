@@ -1,20 +1,9 @@
-<div class="py-2">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to "Runa", root_path %></li>
-      <li class="breadcrumb-item"><%= link_to "Tasks", tasks_path %></li>
-      <li class="breadcrumb-item"><%= link_to @task.name, @task %></li>
-      <li class="breadcrumb-item"><%= link_to "Runs", task_runs_path(@task) %></li>
-    </ol>
-  </nav>
+<% title "#{@task.name} ##{@run.sequential_id}" %>
+<h1>
+  <span class="text-muted float-end">#<%= @run.sequential_id %></span>
+  <%= link_to @task.name, @task %>
+</h1>
+<p>Created <%= time_tag(@run.created_at, time_ago_in_words(@run.created_at)) %> ago</p>
 
-  <% title "#{@task.name} ##{@run.sequential_id}" %>
-  <h1>
-    <span class="text-muted float-end">#<%= @run.sequential_id %></span>
-    <%= link_to @task.name, @task %>
-  </h1>
-  <p>Created <%= time_tag(@run.created_at, time_ago_in_words(@run.created_at)) %> ago</p>
-
-  <%= turbo_stream_from "run" %>
-  <%= render "run", run: @run %>
-</div>
+<%= turbo_stream_from "run" %>
+<%= render "run", run: @run %>

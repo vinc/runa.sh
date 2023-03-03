@@ -1,11 +1,14 @@
-<div class="flex-grow-1 d-flex align-items-center justify-content-center">
-  <h1 class="display-1">Runa</h1>
-</div>
-<style>
-  h1 {
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    background-image: linear-gradient(45deg, #0ff, #0f0);
-  }
-</style>
+<%= content_for :fullscreen do %>
+  <div class="flex-grow-1 d-flex align-items-center justify-content-center">
+    <h1 class="display-1">Runa</h1>
+  </div>
+
+  <style>
+    h1 {
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      background-image: linear-gradient(45deg, #0ff, #0f0);
+    }
+  </style>
+<% end %>

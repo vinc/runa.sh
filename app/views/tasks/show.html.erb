@@ -1,63 +1,54 @@
-<div class="pt-2 pb-4">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to "Runa", root_path %></li>
-      <li class="breadcrumb-item" aria-current="page"><%= link_to "Tasks", tasks_path %></li>
-    </ol>
-  </nav>
+<h1><%= title @task.name %></h1>
+<p>Created <%= time_tag(@task.created_at, time_ago_in_words(@task.created_at)) %> ago</p>
 
-  <h1><%= title @task.name %></h1>
-  <p>Created <%= time_tag(@task.created_at, time_ago_in_words(@task.created_at)) %> ago</p>
+<div class="d-grid mb-3">
+  <%= link_to "Run", task_runs_path(@task), class: "btn btn-primary", data: { turbo_method: :post } %>
+</div>
 
-  <div class="d-grid mb-3">
-    <%= link_to "Run", task_runs_path(@task), class: "btn btn-primary", data: { turbo_method: :post } %>
-  </div>
+<h3>Input</h3>
+<div class="alert alert-light" role="alert">
+  <pre class="mb-0"><code><%= @task.input %></code></pre>
+</div>
 
-  <h3>Input</h3>
-  <div class="alert alert-light" role="alert">
-    <pre class="mb-0"><code><%= @task.input %></code></pre>
-  </div>
-
-  <% if @task.runs.any? %>
-    <h3>
-      <span class="float-end">
-        <%= link_to task_runs_path(@task) do %>
-          All Runs
-        <% end %>
-      </span>
-      Latest Runs
-    </h3>
-    <table class="table">
-      <thead>
+<% if @task.runs.any? %>
+  <h3>
+    <span class="float-end">
+      <%= link_to task_runs_path(@task) do %>
+        All Runs
+      <% end %>
+    </span>
+    Latest Runs
+  </h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Created</th>
+        <th scope="col">Duration</th>
+        <th scope="col">State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @task.runs.order(created_at: :desc).limit(10).each do |run| %>
         <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Created</th>
-          <th scope="col">Duration</th>
-          <th scope="col">State</th>
+          <th scope="row">
+            <%= link_to(run.sequential_id, [@task, run]) %>
+          </th>
+          <td>
+            <%= time_tag(run.created_at, time_ago_in_words(run.created_at)) %> ago
+          </td>
+          <td>
+            <%= duration_to_human(run.duration) %>
+          </td>
+          <td class="text-<%= run_color(run) %>">
+            <%= run_state(run) %>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        <% @task.runs.order(created_at: :desc).limit(10).each do |run| %>
-          <tr>
-            <th scope="row">
-              <%= link_to(run.sequential_id, [@task, run]) %>
-            </th>
-            <td>
-              <%= time_tag(run.created_at, time_ago_in_words(run.created_at)) %> ago
-            </td>
-            <td>
-              <%= duration_to_human(run.duration) %>
-            </td>
-            <td class="text-<%= run_color(run) %>">
-              <%= run_state(run) %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
-  <div class="d-grid mt-4">
-    <%= link_to "Edit Task", edit_task_path(@task), class: "btn btn-outline-primary" %>
-  </div>
+<div class="d-grid mt-4">
+  <%= link_to "Edit Task", edit_task_path(@task), class: "btn btn-outline-primary" %>
 </div>
