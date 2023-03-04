@@ -6,8 +6,9 @@ class RunJob < ApplicationJob
     run.start!
     Dir.mktmpdir do |dir|
       out = []
+      env = { "TOKEN" => run.task.user.token }
       cmd = run.task.input
-      IO.popen(cmd, chdir: dir) do |io|
+      IO.popen(env, cmd, chdir: dir) do |io|
         until io.eof?
           return if run.reload.canceled?
           out << io.gets
