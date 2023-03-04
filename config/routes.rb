@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :tasks, param: :uuid do
     resources :runs, param: :sequential_id do
-      resources :assets, param: :filename, only: [:index, :show]
+      resources :assets, param: :filename, constraints: { filename: /.*/ }, only: [:index, :show]
       member do
         put "cancel"
       end

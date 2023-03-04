@@ -7,8 +7,7 @@ class AssetsController < RunsController
   end
 
   def show
-    filename = [params["filename"], params["format"]].compact.join(".")
-    asset = @assets.attachments.find { |a| a.filename == filename }
+    asset = @assets.attachments.find { |a| a.filename == params["filename"] }
     raise ActiveRecord::RecordNotFound if asset.nil?
     redirect_to(url_for(asset))
   end
