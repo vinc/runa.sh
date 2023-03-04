@@ -8,7 +8,7 @@ class RunJob < ApplicationJob
       out = []
       env = { "TOKEN" => run.task.user.token }
       cmd = run.task.input
-      IO.popen(env, cmd, chdir: dir) do |io|
+      IO.popen(env, cmd, chdir: dir, err: [:child, :out]) do |io|
         until io.eof?
           return if run.reload.canceled?
           out << io.gets
