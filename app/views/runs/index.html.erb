@@ -1,6 +1,8 @@
-<div class="d-grid mb-4">
-  <%= link_to "New Run", task_runs_path(@task), class: "btn btn-outline-primary", data: { turbo_method: :post } %>
-</div>
+<% if @task %>
+  <div class="d-grid mb-4">
+    <%= link_to "New Run", task_runs_path(@task), class: "btn btn-outline-primary", data: { turbo_method: :post } %>
+  </div>
+<% end %>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <% @runs.each do |run| %>

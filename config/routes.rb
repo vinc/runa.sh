@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :runs, only: :index
+
   resources :tasks, param: :uuid do
     resources :runs, param: :sequential_id do
       resources :assets, param: :filename, constraints: { filename: /.*/ }, only: [:index, :show]

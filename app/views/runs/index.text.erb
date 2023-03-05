@@ -1,2 +1,2 @@
-<% @runs.each do |run| %><%= run.sequential_id %>
+<% @runs.each do |run| %>/tasks/<%= run.task.uuid %>/runs/<%= run.sequential_id %>
 <% end %>

@@ -4,7 +4,7 @@ class RunsController < ApplicationController
   before_action :set_breadcrumb
 
   def index
-    scope = @task.runs
+    scope = (@task || current_user).runs
     scope = scope.where("output ~* ?", params["query"]) if params["query"].present?
     scope = scope.order(created_at: :desc).page(params["page"]).per(params["limit"] || 24)
     @runs = authorize scope
@@ -39,6 +39,7 @@ class RunsController < ApplicationController
   end
 
   def set_breadcrumb
-    @breadcrumb = [["Runa", root_path], ["Tasks", tasks_path], [@task.uuid, @task]]
+    @breadcrumb = [["Runa", root_path]]
+    @breadcrumb += [["Tasks", tasks_path], [@task.uuid, @task]] if @task
   end
 end
