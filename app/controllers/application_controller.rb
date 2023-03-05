@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     if request.headers["Authorization"].present?
       authenticate_or_request_with_http_token do |token|
-        return @current_user ||= User.find_by(token: token) # FIXME: timing attack
+        return @current_user ||= User.find_by(api_key: token) # FIXME: timing attack
       end
     end
     super

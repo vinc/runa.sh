@@ -6,9 +6,17 @@ class RunJob < ApplicationJob
     run.start!
     Dir.mktmpdir do |dir|
       out = []
-      env = { "TOKEN" => run.task.user.token }
       cmd = run.task.input
-      IO.popen(env, cmd, chdir: dir, err: [:child, :out]) do |io|
+      env = {
+        "RUNA_API_KEY" => run.task.user.api_key,
+        "RUNA_API_URL" => ENV["RUNA_API_URL"],
+      }
+      opt = {
+        chdir: dir,
+        err: [:child, :out],
+        unsetenv_others: true,
+      }
+      IO.popen(env, cmd, opt) do |io|
         until io.eof?
           return if run.reload.canceled?
           out << io.gets
