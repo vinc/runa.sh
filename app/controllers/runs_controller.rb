@@ -32,6 +32,12 @@ class RunsController < ApplicationController
     redirect_to task_run_path(@task, @run.sequential_id)
   end
 
+  def destroy
+    @run = authorize @task.runs.find_by(sequential_id: params["sequential_id"])
+    @run.destroy
+    redirect_to task_runs_path(@task), notice: "The run was successfully destroyed"
+  end
+
   protected
 
   def set_task

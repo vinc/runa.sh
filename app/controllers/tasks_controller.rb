@@ -43,6 +43,12 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    @task = authorize current_user.tasks.find_by(uuid: params["uuid"])
+    @task.destroy
+    redirect_to tasks_path, notice: "The task was successfully destroyed"
+  end
+
   protected
 
   def task_params

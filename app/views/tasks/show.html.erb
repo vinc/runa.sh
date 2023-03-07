@@ -1,4 +1,7 @@
-<h1><%= title @task.name %></h1>
+<div>
+  <%= link_to "Delete Task", @task, class: "float-end mt-2 btn btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "This task will be deleted" } %>
+  <h1><%= title @task.name %></h1>
+</div>
 <p>Created <%= time_tag(@task.created_at, time_ago_in_words(@task.created_at)) %> ago</p>
 
 <div class="d-grid mb-3">

@@ -1,8 +1,12 @@
 <% title "#{@task.name} ##{@run.sequential_id}" %>
-<h1>
-  <span class="text-muted float-end">#<%= @run.sequential_id %></span>
-  <%= link_to @task.name, @task %>
-</h1>
+
+<div>
+  <%= link_to "Delete Run", [@task, @run], class: "float-end mt-2 btn btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "This run will be deleted" } %>
+  <h1>
+    <%= link_to @task.name, @task %>
+    <span class="text-muted">#<%= @run.sequential_id %></span>
+  </h1>
+</div>
 <p>Created <%= time_tag(@run.created_at, time_ago_in_words(@run.created_at)) %> ago</p>
 
 <%= turbo_stream_from "run" %>
