@@ -1,8 +1,23 @@
+$primary: #93C;
+
+// FIXME: https://github.com/twbs/bootstrap/issues/37976
+$link-color-dark: $primary;
+$link-hover-color-dark: #73A;
+
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
+
+$link-hover-color-dark: $link-hover-color;
 
 @media (prefers-color-scheme: dark) {
   body {
     background-color: $body-bg-dark;
   }
+}
+
+h1.logo {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(45deg, $primary, #36C);
 }
