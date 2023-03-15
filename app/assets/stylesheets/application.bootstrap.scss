@@ -7,8 +7,6 @@ $link-hover-color-dark: #73A;
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
 
-$link-hover-color-dark: $link-hover-color;
-
 @media (prefers-color-scheme: dark) {
   body {
     background-color: $body-bg-dark;
