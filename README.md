@@ -1,15 +1,22 @@
 # Runa
 
-Runa makes it easy to run heavy tasks on your servers from anywhere
+Runa makes it easy to run heavy tasks on multiple servers and get the result
+from anywhere.
 
 ## Setup
+
+### Web server
 
     $ sudo systemctl start redis
     $ sudo systemctl start postgresql
     $ curl -sSL https://get.runa.sh > runa.sh
-    $ bash runa.sh server-init
-
+    $ bash runa.sh server-init web
     $ bash runa.sh server-exec web
+
+### Job server
+
+    $ curl -sSL https://get.runa.sh > runa.sh
+    $ bash runa.sh server-init job
     $ bash runa.sh server-exec job
 
 ## Usage
