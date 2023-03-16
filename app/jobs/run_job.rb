@@ -31,5 +31,6 @@ class RunJob < ApplicationJob
       end
     end
     run.finish!
+    RunMailer.with(run: run).finished_email.deliver_later
   end
 end

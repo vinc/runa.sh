@@ -1,4 +1,4 @@
 web: unset PORT && bin/rails server -b 0.0.0.0
-job: bundle exec good_job start --queues "run_xs:8;run_sm:4;run_md:2;run_lg:1"
+job: bundle exec good_job start --queues "default:8;run_xs:8;run_sm:4;run_md:2;run_lg:1"
 js: yarn build --watch
 css: yarn build:css --watch

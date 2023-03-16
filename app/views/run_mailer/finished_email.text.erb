@@ -1,0 +1,14 @@
+# <%= @run.task.name %> #<%= @run.sequential_id %>
+
+# Input
+<%= @run.task.input %>
+
+# Output
+<%= @run.output -%>
+<% if @run.assets.present? -%>
+
+# Assets
+<% @run.assets.sort_by(&:filename).each do |asset| -%>
+- <%= url_for asset %>
+<% end %>
+<% end -%>
