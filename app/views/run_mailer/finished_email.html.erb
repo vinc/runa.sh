@@ -6,11 +6,20 @@
   <body>
     <h1><%= @run.task.name %> #<%= @run.sequential_id %></h1>
 
-    <h2>Input</h2>
-    <pre><code><%= @run.input %></code></pre>
+    <h3>Input</h3>
+    <pre><code><%= @run.task.input %></code></pre>
 
-    <h2>Output</h2>
+    <h3>Output</h3>
     <pre><code><%= @run.output %></code></pre>
+
+    <% if @run.assets.present? %>
+      <h3>Assets</h3>
+      <ul>
+        <% @run.assets.sort_by(&:filename).each do |asset| %>
+          <li><%= link_to asset.filename, asset %></li>
+        <% end %>
+      </ul>
+    <% end %>
   </body>
 </html>
 
