@@ -1,6 +1,6 @@
 # Runa
 
-Runa makes it easy to run heavy tasks on many servers and get the result from anywhere.
+Runa makes it easy to run heavy scripts on your servers and check the result from anywhere.
 
 ## Setup
 
