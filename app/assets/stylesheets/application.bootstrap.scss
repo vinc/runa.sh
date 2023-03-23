@@ -13,9 +13,9 @@ $link-hover-color-dark: #73A;
   }
 }
 
-h1.logo {
+.logo {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-image: linear-gradient(45deg, $primary, #36C);
+  background-image: linear-gradient(45deg, $primary, #C3A);
 }
