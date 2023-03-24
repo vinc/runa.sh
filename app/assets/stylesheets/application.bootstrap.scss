@@ -1,6 +1,8 @@
+$color-mode-type: media-query;
 $primary: #93C;
 $link-color-dark: $primary;
-$color-mode-type: media-query;
+$link-decoration: none;
+$link-hover-decoration: underline;
 
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
