@@ -82,5 +82,9 @@ group :development do
   # gem "spring"
 
   gem "letter_opener"
+  gem "rubocop", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
 end
 
