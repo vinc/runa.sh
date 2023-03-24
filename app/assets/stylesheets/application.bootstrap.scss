@@ -4,14 +4,10 @@ $primary: #93C;
 $link-color-dark: $primary;
 $link-hover-color-dark: #73A;
 
+$color-mode-type: media-query;
+
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: $body-bg-dark;
-  }
-}
 
 .logo {
   background-clip: text;
