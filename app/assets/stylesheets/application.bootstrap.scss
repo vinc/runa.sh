@@ -1,9 +1,5 @@
 $primary: #93C;
-
-// FIXME: https://github.com/twbs/bootstrap/issues/37976
 $link-color-dark: $primary;
-$link-hover-color-dark: #73A;
-
 $color-mode-type: media-query;
 
 @import "bootstrap/scss/bootstrap";

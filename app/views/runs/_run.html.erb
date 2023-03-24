@@ -1,26 +1,26 @@
 <div id="<%= dom_id run %>">
   <%= turbo_frame_tag dom_id(run) do %>
-    <div class="d-grid mb-3">
+    <div class="d-grid">
       <% if run.created? or run.started? %>
-        <%= link_to "Cancel", cancel_task_run_path(run.task, run.sequential_id), class: "btn btn-danger", data: { turbo_method: :put } %>
+        <%= link_to "Cancel", cancel_task_run_path(run.task, run.sequential_id), class: "btn btn-danger mb-3", data: { turbo_method: :put } %>
       <% else %>
-        <%= link_to run.state.capitalize, "#", class: "btn btn-outline-secondary disabled" %>
+        <%= link_to run.state.capitalize, "#", class: "btn btn-outline-secondary disabled mb-3" %>
+      <% end %>
+
+      <h3>Input</h3>
+      <pre class="border rounded bg-light-subtle text-muted p-3"><code><%= run.task.input %></code></pre>
+
+      <h3>Output</h3>
+      <pre class="border rounded bg-light-subtle text-muted p-3"><code><%= run.output %></code></pre>
+
+      <% if run.assets.present? %>
+        <h3>Assets</h3>
+        <ul class="mb-0">
+          <% run.assets.sort_by(&:filename).each do |asset| %>
+            <li><%= link_to asset.filename, asset %></li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
-
-    <h3>Input</h3>
-    <pre class="border rounded bg-light-subtle text-muted p-3"><code><%= run.task.input %></code></pre>
-
-    <h3>Output</h3>
-    <pre class="border rounded bg-light-subtle text-muted p-3"><code><%= run.output %></code></pre>
-
-    <% if run.assets.present? %>
-      <h3>Assets</h3>
-      <ul class="mb-0">
-        <% run.assets.sort_by(&:filename).each do |asset| %>
-          <li><%= link_to asset.filename, asset %></li>
-        <% end %>
-      </ul>
-    <% end %>
   <% end %>
 </div>
