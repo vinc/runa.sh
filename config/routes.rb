@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  constraints subdomain: "get" do
+    get "/", to: redirect("/runa.sh")
+    match "(*any)", to: redirect(ENV["RUNA_URL"]), via: :all
+  end
+
   mount GoodJob::Engine => "jobs"
 
   devise_for :users
@@ -14,7 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get "pages/home"
+  get "download", to: "pages#download"
 
   root "pages#home"
 end

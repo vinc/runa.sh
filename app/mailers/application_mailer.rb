@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "bot@runa.sh"
+  default from: ENV["RUNA_MAIL"]
   layout "mailer"
 end

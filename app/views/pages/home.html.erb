@@ -1,11 +1,14 @@
 <%= content_for :fullscreen do %>
   <div class="position-relative my-2 d-flex flex-grow-1 flex-column justify-content-center align-content-center">
     <h3 class="position-absolute top-0 start-0 fw-thin logo pb-1 align-self-start">Runa</h3>
+    <div class="position-absolute top-0 end-0 pb-1 align-self-start">
+      <%= link_to "Console", tasks_path, role: "button", class: "btn btn-outline-primary " %>
+    </div>
     <div class="col-lg-6 col-md-8 col-sm-10 mx-auto">
       <h1 class="display-5 fw-bold mb-3">Simplify your batch processing workflow</h1>
       <p class="lead fw-normal">Runa makes it easy to run heavy scripts on your servers and check the result from anywhere.</p>
       <div class="d-grid gap-3 d-sm-flex justify-content-sm-start">
-        <a class="btn btn-primary btn-lg" href="/tasks" role="button">Get Started</a>
+        <%= link_to "Download", download_path, role: "button", class: "btn btn-primary btn-lg" %>
         <a class="btn btn-outline-secondary btn-lg" href="https://github.com/vinc/runa.sh" role="button">Learn More</a>
       </div>
     </div>

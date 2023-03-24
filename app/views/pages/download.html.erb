@@ -1,0 +1,23 @@
+<%= content_for :fullscreen do %>
+  <div class="position-relative my-2 d-flex flex-grow-1 flex-column justify-content-center align-content-center">
+    <%= link_to root_url do %>
+      <h3 class="position-absolute top-0 start-0 fw-thin logo pb-1 align-self-start">Runa</h3>
+    <% end %>
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <h1 class="display-5 fw-bold mb-3"><%= title "Get Runa on your servers" %></h1>
+      <p class="lead fw-normal">
+        Runa requires the installation of PostgreSQL, Redis, and Minio for data storage,
+        along with a web service and one job service per server.
+      </p>
+      <h3 class="fw-semibold">Web service</h3>
+      <pre class="border rounded bg-light-subtle text-muted p-3"><code>curl -sSL <%= ENV["RUNA_GET_URL"] %> &gt; runa.sh
+bash runa.sh service-init web
+bash runa.sh service-exec web</code></pre>
+
+      <h3 class="fw-semibold">Job service</h3>
+      <pre class="border rounded bg-light-subtle text-muted p-3"><code>curl -sSL <%= ENV["RUNA_GET_URL"] %> &gt; runa.sh
+bash runa.sh service-init job
+bash runa.sh service-exec job</code></pre>
+    <div>
+  </div>
+<% end %>
