@@ -91,10 +91,21 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: URI.parse(ENV["RUNA_URL"]).host }
+  config.good_job.execution_mode = :external
+
   config.hosts << URI.parse(ENV["RUNA_URL"]).host
   config.hosts << URI.parse(ENV["RUNA_API_URL"]).host
   config.hosts << URI.parse(ENV["RUNA_GET_URL"]).host
 
-  config.good_job.execution_mode = :external
+  config.action_mailer.default_url_options = {
+    host: URI.parse(ENV["RUNA_URL"]).host
+  }
+  config.action_mailer.smtp_settings = {
+    port: ENV["SMTP_PORT"].to_i,
+    address: ENV["SMTP_HOST"],
+    user_name: ENV["SMTP_USERNAME"],
+    password: ENV["SMTP_PASSWORD"],
+    domain: ENV["SMTP_DOMAIN"],
+    authentication: :plain
+  }
 end
