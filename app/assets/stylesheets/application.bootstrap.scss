@@ -1,17 +1,12 @@
+$color-mode-type: media-query;
 $primary: #93C;
-
-// FIXME: https://github.com/twbs/bootstrap/issues/37976
 $link-color-dark: $primary;
-$link-hover-color-dark: #73A;
+$link-decoration: none;
+$link-hover-decoration: underline;
+$headings-color-dark: #fff;
 
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: $body-bg-dark;
-  }
-}
 
 .logo {
   background-clip: text;
