@@ -3,6 +3,9 @@
     <%= link_to root_url do %>
       <h3 class="position-absolute top-0 start-0 fw-thin logo pb-1 align-self-start">Runa</h3>
     <% end %>
+    <div class="position-absolute top-0 end-0 pb-1 align-self-start">
+      <%= link_to "Console", tasks_path, role: "button", class: "btn btn-outline-primary " %>
+    </div>
     <div class="col-lg-8 col-md-10 mx-auto">
       <h1 class="display-5 fw-bold mb-3"><%= title "Get Runa on your servers" %></h1>
       <p class="lead fw-normal">

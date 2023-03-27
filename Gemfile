@@ -59,6 +59,7 @@ gem "devise-bootstrap5"
 gem "good_job"
 gem "kaminari"
 gem "pundit"
+gem "rouge"
 gem "sequenced"
 gem "meta-tags"
 

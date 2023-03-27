@@ -26,4 +26,10 @@ module ApplicationHelper
       resource: resource.class.model_name.human.downcase
     )
   end
+
+  def highlight(script)
+    formatter = Rouge::Formatters::HTML.new
+    lexer = Rouge::Lexers::Shell.new
+    formatter.format(lexer.lex(script))
+  end
 end

@@ -7,11 +7,11 @@
         <%= link_to run.state.capitalize, "#", class: "btn btn-outline-secondary disabled mb-3" %>
       <% end %>
 
-      <h3>Input</h3>
-      <pre class="border rounded bg-light-subtle text-muted p-3"><code><%= run.task.input %></code></pre>
+      <h3>Script</h3>
+      <div class="highlight border rounded bg-light-subtle p-3 mb-3"><%= raw highlight(run.script) %></div>
 
       <h3>Output</h3>
-      <pre class="border rounded bg-light-subtle text-muted p-3"><code><%= run.output %></code></pre>
+      <pre class="border rounded bg-light-subtle p-3"><code><%= run.output %></code></pre>
 
       <% if run.assets.present? %>
         <h3>Assets</h3>

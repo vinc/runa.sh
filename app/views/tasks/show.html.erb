@@ -6,8 +6,8 @@
 
 <%= link_to "Run", task_runs_path(@task), class: "btn btn-primary mb-3", data: { turbo_method: :post } %>
 
-<h3>Input</h3>
-<pre class="border rounded bg-light-subtle text-muted p-3"><code><%= @task.input %></code></pre>
+<h3>Script</h3>
+<div class="highlight border rounded bg-light-subtle p-3 mb-3"><%= raw highlight(@task.script) %></div>
 
 <% if @task.runs.any? %>
   <h3>

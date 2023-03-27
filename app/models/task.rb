@@ -6,7 +6,7 @@ class Task < ApplicationRecord
   enum :runner, [:run_xs, :run_sm, :run_md, :run_lg]
 
   validates :name, presence: true
-  validates :input, presence: true
+  validates :script, presence: true
   validates :runner, presence: true
 
   before_create :set_uuid
