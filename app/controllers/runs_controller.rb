@@ -18,6 +18,7 @@ class RunsController < ApplicationController
 
   def create
     @run = authorize @task.runs.new
+    @run.script = @task.script
     if @run.save
       RunJob.set(wait: 1.seconds).perform_later(@run)
     redirect_to task_run_path(@task, @run.sequential_id)
