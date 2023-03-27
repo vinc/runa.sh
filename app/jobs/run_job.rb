@@ -6,7 +6,7 @@ class RunJob < ApplicationJob
     run.start!
     Dir.mktmpdir do |dir|
       out = []
-      cmd = run.task.input
+      cmd = run.task.script
       env = {
         "RUNA_API_KEY" => run.task.user.api_key,
         "RUNA_API_URL" => ENV["RUNA_API_URL"],

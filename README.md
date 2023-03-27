@@ -36,7 +36,7 @@ Go to http://localhost:3000
     $ bash runa.sh get --task 7cfc2395-d6b2-468c-bb55-d61528a35526 --run 42 --assets
     $ bash runa.sh get --task 7cfc2395-d6b2-468c-bb55-d61528a35526 --run 42 --asset result.csv
 
-    $ bash runa.sh set --task "My First Awesome Task" --input task.sh
+    $ bash runa.sh set --task "My First Awesome Task" --script task.sh
     $ bash runa.sh run --task "My First Awesome Task"
 
     $ bash runa.sh get --task "My First Awesome Task"

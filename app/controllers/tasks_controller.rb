@@ -52,7 +52,7 @@ class TasksController < ApplicationController
   protected
 
   def task_params
-    params.require(:task).permit(:name, :input, :assets, :runner)
+    params.require(:task).permit(:name, :script, :assets, :runner)
   end
 
   def set_breadcrumb
