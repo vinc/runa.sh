@@ -36,7 +36,7 @@
           <% if @breadcrumb.present? %>
             <nav class="" aria-label="breadcrumb">
               <ol class="breadcrumb flex-nowrap pe-2">
-                <% @breadcrumb.each do |name, link| %>
+                <% @breadcrumb[1..].each do |name, link| %>
                   <li class="breadcrumb-item text-truncate <%= name == @breadcrumb.last.first ? "active" : "" %>">
                     <% if link.present? %>
                       <%= link_to name, link %>
