@@ -39,7 +39,7 @@ service-exec() {
   source .env
   case "$1" in
     "web") bundle exec rails server -b 0.0.0.0;;
-    "job") bundle exec good_job start --queues "default:8;run_xs:8;run_sm:4;run_md:2;run_lg:1";;
+    "job") bundle exec good_job start --queues "default:8;xs:8;sm:4;md:2;lg:1";;
     *) echo "Could not execute service: $1" && exit 1;;
   esac
 }

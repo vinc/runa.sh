@@ -28,7 +28,7 @@
 
   <div class="form-group mt-2">
     <%= f.label :runner %>
-    <%= f.select :runner, Task.runners.keys, {}, class: "form-select #{"is-invalid" if task.errors[:runner].any?}" %>
+    <%= f.select :runner, Task.runner_labels.invert, {}, class: "form-select #{"is-invalid" if task.errors[:runner].any?}" %>
   </div>
 
   <div class="d-grid mt-4">

@@ -3,7 +3,16 @@ class Task < ApplicationRecord
 
   belongs_to :user
 
-  enum :runner, [:run_xs, :run_sm, :run_md, :run_lg]
+  enum :runner, [:xs, :sm, :md, :lg]
+
+  def self.runner_labels
+    {
+      xs: "1 CPU + 1GB RAM",
+      sm: "2 CPU + 2GB RAM",
+      md: "4 CPU + 4GB RAM",
+      lg: "8 CPU + 8GB RAM"
+    }
+  end
 
   validates :name, presence: true
   validates :script, presence: true
