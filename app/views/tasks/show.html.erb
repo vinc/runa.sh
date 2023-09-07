@@ -2,7 +2,7 @@
   <%= link_to "Delete Task", @task, class: "float-end mt-2 btn btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "This task will be deleted" } %>
   <h1><%= title @task.name %></h1>
 </div>
-<p>Created <%= time_tag(@task.created_at, time_ago_in_words(@task.created_at)) %> ago</p>
+<p>Created <%= time_ago(@task.created_at) %> ago</p>
 
 <%= link_to "Run", task_runs_path(@task), class: "btn btn-primary mb-3", data: { turbo_method: :post } %>
 
@@ -34,7 +34,7 @@
             <%= link_to(run.sequential_id, [@task, run]) %>
           </th>
           <td>
-            <%= time_tag(run.created_at, time_ago_in_words(run.created_at)) %> ago
+            <%= time_ago(run.created_at) %> ago
           </td>
           <td>
             <%= duration_to_human(run.duration) %>

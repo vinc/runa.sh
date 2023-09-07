@@ -7,7 +7,7 @@
     <span class="text-muted">#<%= @run.sequential_id %></span>
   </h1>
 </div>
-<p>Created <%= time_tag(@run.created_at, time_ago_in_words(@run.created_at)) %> ago</p>
+<p>Created <%= time_ago(@run.created_at) %> ago</p>
 
 <%= turbo_stream_from "run" %>
 <%= render "run", run: @run %>
