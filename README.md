@@ -41,3 +41,7 @@ Go to http://localhost:3000
 
     $ bash runa.sh get --task "My First Awesome Task"
     $ bash runa.sh get --task "My First Awesome Task" --run 1
+
+## License
+
+Runa is released under MIT
